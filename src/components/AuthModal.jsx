@@ -34,7 +34,7 @@ const AuthModal = ({ isOpen, onClose }) => {
               <FaTimes />
             </button>
             <h2 className="text-2xl font-bold text-center text-blue-600 mb-6">
-              {isLogin ? "Login to AdBridge" : "Create an Account"}
+              {isLogin ? "Login to BuzzFleet" : "Create an Account"}
             </h2>
 
             <form className="flex flex-col gap-4">

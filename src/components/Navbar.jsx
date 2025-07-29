@@ -25,7 +25,7 @@ const Navbar = () => {
           <Link to="/influencers">For Influencers</Link>
         </li>
         <li>
-          <a href="#contact">Contact</a>
+          <a href="/contact">Contact</a>
         </li>
       </ul>
     </nav>

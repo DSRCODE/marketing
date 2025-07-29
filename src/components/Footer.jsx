@@ -29,7 +29,7 @@ export default function Footer() {
             <br />
             📞 +91-9782488408
             <br />
-            📧 hello@promotia.com
+            📧 hello@BuzzFleet.com
           </p>
         </div>
 
@@ -107,7 +107,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="mt-12 border-t border-gray-700 pt-6 text-center text-xs text-gray-500">
-        © {new Date().getFullYear()} Promotia — All rights reserved.
+        © {new Date().getFullYear()} BuzzFleet — All rights reserved.
       </div>
     </footer>
   );

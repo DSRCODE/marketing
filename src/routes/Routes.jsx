@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import BrandPage from "../pages/BrandPage";
 import InfluencerPage from "../pages/InfluencerPage";
+import ContactPage from "../pages/ContactPage";
 
 export default function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/brands" element={<BrandPage />} />
         <Route path="/influencers" element={<InfluencerPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
