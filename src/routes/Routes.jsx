@@ -8,14 +8,20 @@ import NotFound from "../pages/NotFound";
 import BrandPage from "../pages/BrandPage";
 import InfluencerPage from "../pages/InfluencerPage";
 import ContactPage from "../pages/ContactPage";
+import Login from "../components/Login/Login";
 
 export default function AppRoutes() {
   return (
     <Routes>
+      <Route>
+        {" "}
+        <Route path="/login" element={<Login />} />
+      </Route>
       {/* ✅ Routes WITH Layout */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/brands" element={<BrandPage />} />
+
         <Route path="/influencers" element={<InfluencerPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Route>

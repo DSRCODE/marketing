@@ -3,3 +3,127 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+@keyframes gridShake {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateX(2px) translateY(-2px) scale(1.05);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(-1px) translateY(2px) scale(0.95);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateX(-2px) translateY(-1px) scale(1.02);
+    opacity: 0.5;
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(50px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes geometricFloat {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid-background > div {
+  animation: gridShake infinite ease-in-out;
+}
+
+.particles-container > div {
+  animation: particleFloat infinite linear;
+  will-change: transform, opacity;
+}
+
+.geometric-shape {
+  position: absolute;
+  border: 2px solid rgba(236, 72, 153, 0.3);
+  animation: geometricFloat 6s infinite ease-in-out;
+}
+
+.geometric-shape-1 {
+  width: 60px;
+  height: 60px;
+  top: 20%;
+  left: 10%;
+  border-radius: 50%;
+}
+
+.geometric-shape-2 {
+  width: 40px;
+  height: 40px;
+  top: 60%;
+  right: 15%;
+  transform: rotate(45deg);
+}
+
+.geometric-shape-3 {
+  width: 50px;
+  height: 50px;
+  bottom: 25%;
+  left: 15%;
+  border-radius: 30%;
+}
+
+.hero-title,
+.hero-subtitle,
+.hero-buttons {
+  animation: heroFadeIn 0.8s ease-out forwards;
+}
+
+.hero-title {
+  text-shadow: 0 0 30px rgba(236, 72, 153, 0.3);
+}
+
+@media (max-width: 768px) {
+  .geometric-shape {
+    display: none;
+  }
+
+  .grid-background {
+    opacity: 0.2;
+  }
+}

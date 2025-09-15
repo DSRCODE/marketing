@@ -11,6 +11,11 @@ import ImageGrid from "../components/ImageGrid";
 import HeroIntro from "../components/HeroIntro";
 import ZigZagSteps from "../components/ZigZagSteps";
 import ShowcaseGrid from "../components/ShowcaseGrid";
+import HeroSection2 from "../components/HeroSection/HeroSection2";
+import Background from "../components/Background/Background";
+import WhyChooseUs from "../components/WhyChooseUs";
+import HowItWorks from "../components/HowItWorks";
+import ShowCase from "../components/ShowCase";
 
 const brandSteps = [
   {
@@ -71,16 +76,15 @@ export default function Home() {
   return (
     <>
       <Hero setModalOpen={setModalOpen} />
-      <HeroIntro />
-      <ShowcaseGrid />
-      <ZigZagSteps title="How It Works for Brands" steps={brandSteps} />
-      <ZigZagSteps
-        title="How It Works for Influencers"
-        steps={influencerSteps}
-      />
-
+      <HeroSection2 />
+      {/* <Background /> */}
+      {/* <HeroIntro /> */}
+      <WhyChooseUs />
+      <ShowCase />
+      <HowItWorks />
       {/* <ImageGrid /> */}
-      <Testimonials />
+      {/* <ShowcaseGrid />
+      <Testimonials /> */}
       <AuthModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>
   );
