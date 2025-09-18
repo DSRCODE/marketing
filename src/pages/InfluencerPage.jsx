@@ -1,271 +1,491 @@
-import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
-import InfluencerOnboardingForm from "../components/InfluencerOnboardingForm";
+import React, { useState, useEffect } from "react";
+import {
+  ArrowRight,
+  Star,
+  Users,
+  TrendingUp,
+  Zap,
+  Shield,
+  Crown,
+  Award,
+  ChevronRight,
+  Play,
+  CheckCircle,
+  Camera,
+  Heart,
+  MessageSquare,
+  Share2,
+  BarChart3,
+  Sparkles,
+} from "lucide-react";
 
-const InfluencerPage = () => {
+const InfluncerPage = () => {
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [isVisible, setIsVisible] = useState({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible((prev) => ({
+            ...prev,
+            [entry.target.id]: entry.isIntersecting,
+          }));
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll("[id]").forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const features = [
+    {
+      icon: Crown,
+      title: "Premium Brand Partnerships",
+      description:
+        "Connect with top-tier brands looking for authentic influencers to showcase their products to engaged audiences.",
+    },
+    {
+      icon: BarChart3,
+      title: "Advanced Growth Analytics",
+      description:
+        "Comprehensive insights into your audience demographics, engagement rates, and content performance across all platforms.",
+    },
+    {
+      icon: Sparkles,
+      title: "Content Creation Tools",
+      description:
+        "Access professional tools and templates to create stunning content that captivates your audience and drives engagement.",
+    },
+    {
+      icon: Shield,
+      title: "Reputation Management",
+      description:
+        "Build and protect your personal brand with our reputation tracking and management tools designed for influencers.",
+    },
+  ];
+
+  const steps = [
+    {
+      number: "01",
+      title: "Build Your Influence Profile",
+      description:
+        "Showcase your unique voice, content style, and audience demographics to attract premium brand partnerships.",
+    },
+    {
+      number: "02",
+      title: "Discover Brand Opportunities",
+      description:
+        "Browse curated brand collaboration opportunities that align with your niche and personal brand values.",
+    },
+    {
+      number: "03",
+      title: "Create Authentic Content",
+      description:
+        "Craft compelling, authentic content that resonates with your audience while meeting brand objectives.",
+    },
+    {
+      number: "04",
+      title: "Scale Your Influence",
+      description:
+        "Grow your following, increase engagement, and build lasting relationships with brands and your community.",
+    },
+  ];
+
+  const benefits = [
+    "Exclusive brand collaborations",
+    "Advanced audience insights",
+    "Content creation resources",
+    "Personal brand growth tools",
+    "Influencer community network",
+    "Performance-based rewards",
+  ];
+
+  const platforms = [
+    { name: "Instagram", color: "from-pink-400 to-purple-600" },
+    { name: "TikTok", color: "from-purple-400 to-pink-600" },
+    { name: "YouTube", color: "from-red-400 to-pink-500" },
+    { name: "Twitter", color: "from-blue-400 to-purple-500" },
+  ];
+
   return (
-    <div className="bg-white text-gray-800">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}
-      <section className="py-20 px-4 h-[500px] bg-gradient-to-br from-blue-100 to-white flex flex-col items-center justify-center text-center">
-        <motion.h1
-          className="text-4xl md:text-5xl font-bold mb-4"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          Join Our Influencer Network
-        </motion.h1>
-        <motion.p
-          className="text-gray-600 max-w-2xl mx-auto text-lg"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          Become a digital ambassador for top brands. Get consistent paid
-          promotions, grow your personal brand, and become a core part of a
-          trustworthy marketing movement.
-        </motion.p>
+      <section
+        id="hero"
+        className="relative min-h-screen flex items-center justify-center"
+      >
+        {/* Animated Background */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-purple-500/20 to-pink-600/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-gray-500/10 to-pink-600/10 rounded-full blur-2xl animate-bounce"></div>
+        </div>
+
+        <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
+          <div
+            className={`transition-all duration-1000 transform ${
+              isVisible.hero
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
+            }`}
+          >
+            <div className="inline-flex items-center bg-gradient-to-r from-purple-500/10 to-pink-600/10 border border-purple-500/20 rounded-full px-6 py-2 mb-8">
+              <Crown className="w-4 h-4 text-purple-400 mr-2" />
+              <span className="text-sm text-gray-300">
+                Join 25,000+ Top Influencers
+              </span>
+            </div>
+
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-pink-300 bg-clip-text text-transparent leading-tight">
+              Elevate Your Influence,
+              <br />
+              <span className="text-purple-400">Amplify Your Impact</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              Transform your social presence into a powerful influence empire.
+              Connect with premium brands, grow your audience, and build
+              meaningful relationships that drive real impact.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <button className="group bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25">
+                Start Your Journey
+                <ArrowRight className="w-5 h-5 ml-2 inline-block transition-transform group-hover:translate-x-1" />
+              </button>
+
+              <button className="group flex items-center text-gray-300 hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-3 group-hover:bg-white/20 transition-colors">
+                  <Play className="w-5 h-5 ml-1" />
+                </div>
+                See Success Stories
+              </button>
+            </div>
+
+            <div className="mt-16 flex justify-center items-center gap-8 text-gray-400 flex-wrap">
+              <div className="flex items-center">
+                <Star className="w-5 h-5 text-yellow-400 mr-2" />
+                <span>4.9/5 Influencer Rating</span>
+              </div>
+              <div className="w-px h-6 bg-gray-700 hidden sm:block"></div>
+              <div className="flex items-center">
+                <Users className="w-5 h-5 text-purple-400 mr-2" />
+                <span>25K+ Influencers</span>
+              </div>
+              <div className="w-px h-6 bg-gray-700 hidden sm:block"></div>
+              <div className="flex items-center">
+                <TrendingUp className="w-5 h-5 text-pink-400 mr-2" />
+                <span>500M+ Reach</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Why Join Us */}
-      {/* Why Join BuzzFleet? */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.h2
-            className="text-3xl font-semibold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+      {/* Why Choose Social Spark Section */}
+      <section id="why" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-gray-900"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div
+            className={`text-center mb-16 transition-all duration-1000 transform ${
+              isVisible.why
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
+            }`}
           >
-            Why Join BuzzFleet?
-          </motion.h2>
-          <motion.p
-            className="text-gray-600 max-w-3xl mx-auto mb-10"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            Whether you’re just starting out or you're an experienced creator,
-            BuzzFleet empowers you to grow your influence, get paid fairly, and
-            collaborate with trusted brands—big and small. Join a secure,
-            opportunity-rich, performance-based influencer network that values
-            *you*.
-          </motion.p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Why Top Influencers Choose Us
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              We provide the tools, insights, and opportunities you need to
+              transform your influence into meaningful impact and sustainable
+              growth.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-8 text-left">
-            {[
-              {
-                title: "Full-Time Community Membership",
-                desc: "Become a core part of our creator ecosystem. Get ongoing campaign offers, mentorship, and inside access to growth tools.",
-              },
-              {
-                title: "Brand Security Partnership",
-                desc: "We filter out shady deals and fake offers. Work only with verified brands under transparent terms and reliable payment systems.",
-              },
-              {
-                title: "Numerous Collaboration Opportunities",
-                desc: "No more waiting months for one deal. Access multiple brand campaigns every month across categories and regions.",
-              },
-              {
-                title: "Small & Large Brand Gigs",
-                desc: "From emerging startups to popular labels, collaborate with a mix of brands that match your audience and tone.",
-              },
-              {
-                title: "Performance-Based Payout Boosts",
-                desc: "Your engagement and professionalism earn you bonuses. The better you perform, the more you earn — no middlemen.",
-              },
-              {
-                title: "BuzzFleet Growth Track",
-                desc: "Show consistency, and we’ll upgrade your status. Top performers become BuzzFleet Pros — our premium inner circle.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                className="bg-blue-50 p-6 rounded-xl shadow-md hover:shadow-lg transition"
-                whileHover={{ scale: 1.02 }}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className={`group bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-purple-500/50 transition-all duration-500 transform hover:scale-105 cursor-pointer ${
+                  isVisible.why
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-10 opacity-0"
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+                onMouseEnter={() => setActiveFeature(index)}
               >
-                <h3 className="text-xl font-semibold mb-2 text-blue-700">
-                  {item.title}
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <feature.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4 group-hover:text-purple-400 transition-colors">
+                  {feature.title}
                 </h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </motion.div>
+                <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                  {feature.description}
+                </p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 bg-gray-50 px-4">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2
-            className="text-3xl font-semibold text-center mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+      {/* Platform Support Section */}
+      <section id="platforms" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div
+            className={`text-center mb-16 transition-all duration-1000 transform ${
+              isVisible.platforms
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
+            }`}
           >
-            Influencer Perks & Benefits
-          </motion.h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Multi-Platform <span className="text-pink-400">Influence</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Manage and grow your influence across all major social platforms
+              from one unified dashboard.
+            </p>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Category-Based Campaigns",
-                description:
-                  "Get promotions that align with your niche – whether you're into fashion, tech, fitness, or food. We connect you with relevant brands only.",
-                icon: "📢",
-              },
-              {
-                title: "Fair & Fast Payments",
-                description:
-                  "We ensure transparent pricing, no middlemen cuts, and timely payouts after campaign completion – typically within 48 hours.",
-                icon: "💸",
-              },
-              {
-                title: "Real-Time Campaign Insights",
-                description:
-                  "Track engagement, reach, and clicks live on your dashboard. Make smarter content choices with actual data.",
-                icon: "📊",
-              },
-              {
-                title: "Local Brand Matches",
-                description:
-                  "Targeted campaigns from businesses in your city or region, increasing collaboration and boosting your credibility locally.",
-                icon: "📍",
-              },
-              {
-                title: "Support & Community",
-                description:
-                  "Join a growing network of trusted influencers. Get campaign guidance, feedback, and growth tips from our expert team.",
-                icon: "🤝",
-              },
-              {
-                title: "Easy Onboarding Process",
-                description:
-                  "Sign up in minutes. Share your profile, follower insights, and get approved quickly. No contracts or hidden conditions.",
-                icon: "🚀",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                className="bg-white p-6 rounded-xl shadow hover:shadow-xl transition"
-                whileHover={{ scale: 1.05 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {platforms.map((platform, index) => (
+              <div
+                key={index}
+                className={`group p-6 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-purple-500/50 transition-all duration-500 transform hover:scale-105 ${
+                  isVisible.platforms
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-10 opacity-0"
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="text-xl font-bold text-blue-700 mb-2">
-                  {item.title}
+                <div
+                  className={`w-12 h-12 bg-gradient-to-r ${platform.color} rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform`}
+                >
+                  <span className="text-white font-bold">
+                    {platform.name[0]}
+                  </span>
+                </div>
+                <h3 className="font-semibold group-hover:text-purple-400 transition-colors">
+                  {platform.name}
                 </h3>
-                <p className="text-gray-600 text-sm">{item.description}</p>
-              </motion.div>
+              </div>
+            ))}
+          </div>
+
+          <div
+            className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 transform ${
+              isVisible.platforms
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
+            }`}
+          >
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl border border-gray-700 text-center">
+              <Camera className="w-8 h-8 text-purple-400 mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">Content Creation</h3>
+              <p className="text-gray-400 text-sm">
+                Professional tools for every platform
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl border border-gray-700 text-center">
+              <BarChart3 className="w-8 h-8 text-pink-400 mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">Cross-Platform Analytics</h3>
+              <p className="text-gray-400 text-sm">
+                Unified insights across all channels
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-2xl border border-gray-700 text-center">
+              <Share2 className="w-8 h-8 text-purple-400 mx-auto mb-4" />
+              <h3 className="font-semibold mb-2">Smart Scheduling</h3>
+              <p className="text-gray-400 text-sm">
+                Optimize posting times for maximum reach
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-gray-900"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div
+            className={`text-center mb-16 transition-all duration-1000 transform ${
+              isVisible.how
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
+            }`}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Your Influence <span className="text-purple-400">Journey</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              From building your profile to scaling your influence, we guide you
+              every step of the way to maximize your impact.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                className={`relative group transition-all duration-700 transform ${
+                  isVisible.how
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-10 opacity-0"
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700 hover:border-purple-500/50 transition-all duration-300">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center font-bold text-sm mr-4">
+                      {step.number}
+                    </div>
+                    {index < steps.length - 1 && (
+                      <div className="hidden lg:block absolute top-14 left-full w-8 h-px bg-gradient-to-r from-purple-500 to-transparent transform translate-x-4"></div>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 group-hover:text-purple-400 transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-400">{step.description}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* BuzzFleet Comunnity */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            className="text-3xl font-bold text-gray-800 mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Become a Core Member of BuzzFleet
-          </motion.h2>
+      {/* Key Benefits Section */}
+      <section id="benefits" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-gray-900"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div
+              className={`transition-all duration-1000 transform ${
+                isVisible.benefits
+                  ? "translate-x-0 opacity-100"
+                  : "-translate-x-10 opacity-0"
+              }`}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">
+                Maximize Your{" "}
+                <span className="text-purple-400">Influence Impact</span>
+              </h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Join thousands of successful influencers who've transformed
+                their social presence into a powerful force for change and
+                growth.
+              </p>
 
-          <motion.p
-            className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Connect with us for upcoming opportunities and join the growing{" "}
-            <span className="font-semibold text-blue-600">
-              BuzzFleet Community
-            </span>
-            . Your performance and engagement are constantly evaluated—work
-            smart and we’ll ensure you get consistent collaborations based on
-            results, not just follower counts.
-          </motion.p>
+              <div className="space-y-4 mb-8">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-center group">
+                    <CheckCircle className="w-6 h-6 text-purple-400 mr-4 group-hover:scale-110 transition-transform" />
+                    <span className="text-gray-300 group-hover:text-white transition-colors">
+                      {benefit}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
-          <motion.p
-            className="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto mt-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            The better you perform, the more you earn. We match you with a wide
-            range of campaigns—from startups to big brands—so you're never stuck
-            waiting for one deal. If you align with our values and deliver
-            results, you'll be officially onboarded into the{" "}
-            <span className="font-semibold text-blue-600">BuzzFleet tier</span>{" "}
-            — giving you priority access to higher-paying gigs and long-term
-            brand partnerships.
-          </motion.p>
+              <button className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25">
+                Start Growing
+                <ChevronRight className="w-5 h-5 ml-2 inline-block" />
+              </button>
+            </div>
 
-          <motion.div
-            className="mt-10"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow hover:bg-blue-700 transition">
-              Join BuzzFleet Now
-            </button>
-          </motion.div>
+            <div
+              className={`relative transition-all duration-1000 transform ${
+                isVisible.benefits
+                  ? "translate-x-0 opacity-100"
+                  : "translate-x-10 opacity-0"
+              }`}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-600/20 rounded-3xl blur-3xl"></div>
+              <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-3xl border border-gray-700">
+                <div className="text-center mb-6">
+                  <div className="text-5xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text mb-2">
+                    2.5M+
+                  </div>
+                  <p className="text-gray-300">Average Monthly Reach</p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="bg-black/30 p-4 rounded-xl text-center">
+                    <Heart className="w-6 h-6 text-pink-400 mx-auto mb-2" />
+                    <div className="text-xl font-bold text-pink-400">95%</div>
+                    <div className="text-xs text-gray-400">Engagement Rate</div>
+                  </div>
+                  <div className="bg-black/30 p-4 rounded-xl text-center">
+                    <TrendingUp className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+                    <div className="text-xl font-bold text-purple-400">
+                      340%
+                    </div>
+                    <div className="text-xs text-gray-400">Growth Rate</div>
+                  </div>
+                </div>
+
+                <div className="bg-black/30 p-4 rounded-xl text-center">
+                  <MessageSquare className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+                  <div className="text-lg font-bold text-white">15,000+</div>
+                  <div className="text-xs text-gray-400">
+                    Daily Interactions
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Case Study Highlight */}
-      <section className="py-16 bg-white px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h2
-            className="text-3xl font-semibold mb-6"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+      {/* CTA Section */}
+      <section id="cta" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-black to-gray-900"></div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
+          <div
+            className={`transition-all duration-1000 transform ${
+              isVisible.cta
+                ? "translate-y-0 opacity-100"
+                : "translate-y-10 opacity-0"
+            }`}
           >
-            Our Strategy for Smarter Influence
-          </motion.h2>
-          <motion.p
-            className="text-gray-600"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            With modern tools and data-driven approaches, we help brands reach
-            **local audiences** more precisely. We focus on influencers with
-            **authentic engagement**, not fake followers — ensuring our partners
-            get real impact, and you earn meaningful opportunities.
-          </motion.p>
-        </div>
-      </section>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8">
+              Ready to{" "}
+              <span className="text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
+                Amplify
+              </span>{" "}
+              Your Impact?
+            </h2>
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              Join the community of influential creators who are making a
+              difference. Start building meaningful connections and growing your
+              influence today.
+            </p>
 
-      {/* Onboarding Form */}
-      <section className="py-12 bg-blue-50 px-4">
-        <div className="max-w-3xl mx-auto text-center mb-8">
-          <motion.h2
-            className="text-3xl font-semibold mb-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-          >
-            Ready to Get Started?
-          </motion.h2>
-          <p className="text-gray-600">
-            Fill the onboarding form with your follower count, niche category,
-            average reach, and past collaborations. We’ll get back with a
-            campaign best suited for you.
-          </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <button className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25">
+                Join the Elite
+                <ArrowRight className="w-5 h-5 ml-2 inline-block" />
+              </button>
+
+              <button className="border-2 border-gray-600 hover:border-purple-400 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-purple-500/10">
+                Explore Features
+              </button>
+            </div>
+          </div>
         </div>
-        <InfluencerOnboardingForm />
       </section>
     </div>
   );
 };
 
-export default InfluencerPage;
+export default InfluncerPage;

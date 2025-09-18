@@ -9,6 +9,7 @@ import BrandPage from "../pages/BrandPage";
 import InfluencerPage from "../pages/InfluencerPage";
 import ContactPage from "../pages/ContactPage";
 import Login from "../components/Login/Login";
+import BrandPromoterPage from "../pages/BrandPromoterPage";
 
 export default function AppRoutes() {
   return (
@@ -20,7 +21,7 @@ export default function AppRoutes() {
       {/* ✅ Routes WITH Layout */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/brands" element={<BrandPage />} />
+        <Route path="/brands" element={<BrandPromoterPage />} />
 
         <Route path="/influencers" element={<InfluencerPage />} />
         <Route path="/contact" element={<ContactPage />} />

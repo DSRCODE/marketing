@@ -72,7 +72,7 @@ const Hero = ({ setModalOpen }) => {
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-[95vh] text-center px-4 overflow-hidden">
+    <div className="relative h-[95vh] w-full flex items-center justify-center text-center px-4 overflow-hidden">
       {/* Animated Grid Background */}
       <div className="absolute inset-0 opacity-30">
         <div className="grid-background">{generateGridBoxes()}</div>
@@ -110,17 +110,17 @@ const Hero = ({ setModalOpen }) => {
         <div className="geometric-shape geometric-shape-3" />
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10">
+      {/* Main Content - perfectly centered */}
+      <div className="relative z-10 flex flex-col items-center justify-center ">
         <h1
-          className="text-4xl md:text-6xl font-extrabold text-white leading-tight hero-title"
+          className="text-4xl  md:text-6xl font-extrabold text-white hero-title"
           style={{ animationDelay: "0.2s" }}
         >
           Bridging Brands with Real Influence
         </h1>
 
         <p
-          className="mt-4 text-gray-300 text-lg max-w-xl hero-subtitle"
+          className="mt-4 text-gray-300 text-lg hero-subtitle"
           style={{ animationDelay: "0.5s" }}
         >
           A platform to connect your products with the perfect influencers and
@@ -151,9 +151,6 @@ const Hero = ({ setModalOpen }) => {
           </button>
         </div>
       </div>
-
-      {/* CSS Animations */}
-     
     </div>
   );
 };

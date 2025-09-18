@@ -86,7 +86,7 @@ const HeroSection2 = () => {
               Get Started
             </a>
 
-            <a
+            {/* <a
               href="/"
               className="group bg-transparent text-white px-8 py-4 border-2 border-white/30 rounded-full font-semibold text-lg transition-all duration-300 hover:border-white hover:bg-white/10 hover:scale-105 flex items-center gap-2"
             >
@@ -94,7 +94,7 @@ const HeroSection2 = () => {
               <span className="group-hover:translate-x-1 transition-transform">
                 →
               </span>
-            </a>
+            </a> */}
           </div>
         </div>
 

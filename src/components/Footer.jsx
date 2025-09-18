@@ -49,7 +49,7 @@ export default function Footer() {
   const brandLinks = [
     { label: "How it Works", path: "/how-it-works" },
     { label: "Start a Campaign", path: "/start-campaign" },
-    { label: "Pricing", path: "/pricing" },
+    // { label: "Pricing", path: "/pricing" },
     { label: "Success Stories", path: "/success-stories" },
   ];
 

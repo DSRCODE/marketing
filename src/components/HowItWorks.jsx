@@ -143,7 +143,7 @@ const HowItWorks = () => {
 
         {/* Tab Switcher */}
         <div className="flex justify-center mb-20">
-          <div className="bg-gray-900 p-2 rounded-2xl border border-gray-700">
+          <div className="bg-gray-900 p-2 rounded-2xl border border-gray-700 flex gap-4">
             <button
               onClick={() => setActiveTab("brands")}
               className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center gap-3 ${

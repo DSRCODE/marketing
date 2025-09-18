@@ -11,15 +11,15 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "For Brands", path: "/brands" },
     { name: "For Influencers", path: "/influencers" },
-    { name: "How it Works", path: "/how-it-works" },
-    { name: "Pricing", path: "/pricing" },
+
+    // { name: "Pricing", path: "/pricing" },
     { name: "Contact", path: "/contact" },
   ];
 
   const authOptions = [
-    { name: "Login as Influencer", path: "/login/influencer", icon: "✨" },
-    { name: "Login as Brand", path: "/login/brand", icon: "🚀" },
-    { name: "Sign Up", path: "/signup", icon: "👥" },
+    { name: "Login as Influencer", path: "/login/influencer", icon: "" },
+    { name: "Login as Brand", path: "/login/brand", icon: "" },
+    { name: "Sign Up", path: "/signup", icon: "" },
   ];
 
   return (
