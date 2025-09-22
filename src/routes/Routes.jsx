@@ -5,18 +5,17 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 
 import NotFound from "../pages/NotFound";
-import BrandPage from "../pages/BrandPage";
 import InfluencerPage from "../pages/InfluencerPage";
 import ContactPage from "../pages/ContactPage";
 import Login from "../components/Login/Login";
 import BrandPromoterPage from "../pages/BrandPromoterPage";
+import LoginSignupPage from "../components/Login/LoginSignup";
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route>
-        {" "}
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<LoginSignupPage />} />
       </Route>
       {/* ✅ Routes WITH Layout */}
       <Route element={<MainLayout />}>
