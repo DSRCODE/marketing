@@ -11,19 +11,17 @@ import {
   Heart,
   Star,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredSection, setHoveredSection] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const navigate = (path) => {
-    // Replace with your navigation logic
-    console.log(`Navigate to: ${path}`);
-  };
 
   const socialLinks = [
     {
@@ -47,21 +45,21 @@ export default function Footer() {
   ];
 
   const brandLinks = [
-    { label: "How it Works", path: "/how-it-works" },
-    { label: "Start a Campaign", path: "/start-campaign" },
+    { label: "How it Works", path: "/brands" },
+    { label: "Start a Campaign", path: "/brands" },
     // { label: "Pricing", path: "/pricing" },
     { label: "Success Stories", path: "/success-stories" },
   ];
 
   const influencerLinks = [
-    { label: "Join as Influencer", path: "/join-as-influencer" },
+    { label: "Join as Influencer", path: "/login" },
     { label: "Dashboard", path: "/dashboard" },
     { label: "Community", path: "/community" },
     { label: "Resources", path: "/resources" },
   ];
 
   const companyLinks = [
-    { label: "About Us", path: "/about" },
+    { label: "About Us", path: "/aboutus" },
     { label: "Careers", path: "/careers" },
     { label: "Press", path: "/press" },
     { label: "Contact", path: "/contact" },

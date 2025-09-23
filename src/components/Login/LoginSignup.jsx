@@ -13,9 +13,14 @@ import {
   Eye,
   EyeOff,
   Sparkles,
+  CircleArrowLeft,
+  Pointer,
 } from "lucide-react";
+import { BsBack } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignupPage = () => {
+  const navigate = useNavigate();
   const [currentUserType, setCurrentUserType] = useState("influencer");
   const [currentAuthMode, setCurrentAuthMode] = useState("login");
   const [isLoading, setIsLoading] = useState(false);
@@ -163,6 +168,7 @@ const LoginSignupPage = () => {
           {/* Main Card */}
           <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 shadow-2xl">
             {/* Header */}
+            <CircleArrowLeft onClick={() => navigate("/")}  style={{cursor:"pointer"}}/>
             <div className="text-center mb-8">
               <div className="inline-flex items-center bg-gradient-to-r from-purple-500/10 to-pink-600/10 border border-purple-500/20 rounded-full px-4 py-2 mb-4">
                 <Sparkles className="w-4 h-4 text-purple-400 mr-2" />

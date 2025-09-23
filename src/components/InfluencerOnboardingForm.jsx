@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const InfluencerOnboardingForm = () => {
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     // handle data submission here
@@ -43,6 +46,7 @@ const InfluencerOnboardingForm = () => {
           className="w-full px-4 py-2 border rounded-lg focus:outline-blue-500"
         />
         <button
+          onClick={()=>navigate('/login')}
           type="submit"
           className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg transition"
         >

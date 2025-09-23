@@ -1,12 +1,16 @@
-import React from "react";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 const LoginForm = ({
   formData,
-  handleInputChange,
+  setFormData,
   showPassword,
   setShowPassword,
 }) => {
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       <div>
@@ -14,7 +18,7 @@ const LoginForm = ({
           Email Address
         </label>
         <div className="relative">
-          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
+          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
           <input
             type="email"
             name="email"
@@ -32,7 +36,7 @@ const LoginForm = ({
           Password
         </label>
         <div className="relative">
-          <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500" />
+          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
           <input
             type={showPassword ? "text" : "password"}
             name="password"
@@ -45,7 +49,7 @@ const LoginForm = ({
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-400 transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-400 transition-colors"
           >
             {showPassword ? (
               <EyeOff className="w-5 h-5" />

@@ -1,6 +1,8 @@
 import { ArrowRight, Star, Users, TrendingUp, Zap, Play } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const BHeroSection = ({ isVisible }) => {
+  const navigate = useNavigate();
   return (
     <section
       id="hero"
@@ -43,7 +45,10 @@ const BHeroSection = ({ isVisible }) => {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button className="group bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-500/25">
+            <button
+              onClick={() => navigate("/login")}
+              className="group bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-500/25"
+            >
               Start Earning Today
               <ArrowRight className="w-5 h-5 ml-2 inline-block transition-transform group-hover:translate-x-1" />
             </button>
