@@ -11,6 +11,7 @@ import Login from "../components/Login/Login";
 import BrandPromoterPage from "../pages/BrandPromoterPage";
 import LoginSignupPage from "../components/Login/LoginSignup";
 import AboutUs from "../pages/AboutUs";
+import Dashboard from "../pages/dashboard";
 
 export default function AppRoutes() {
   return (
@@ -22,6 +23,7 @@ export default function AppRoutes() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/brands" element={<BrandPromoterPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
 
         <Route path="/influencers" element={<InfluencerPage />} />
         <Route path="/aboutus" element={<AboutUs />} />
