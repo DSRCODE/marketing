@@ -1,16 +1,14 @@
 // routes/Routes.jsx
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
-
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import InfluencerPage from "../pages/InfluencerPage";
 import ContactPage from "../pages/ContactPage";
-import Login from "../components/Login/Login";
 import BrandPromoterPage from "../pages/BrandPromoterPage";
 import LoginSignupPage from "../components/Login/LoginSignup";
 import AboutUs from "../pages/AboutUs";
-import Dashboard from "../pages/dashboard";
+import MainDasboard from "../pages/MainDasboard";
 
 export default function AppRoutes() {
   return (
@@ -22,7 +20,7 @@ export default function AppRoutes() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/brands" element={<BrandPromoterPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<MainDasboard />} />
 
         <Route path="/influencers" element={<InfluencerPage />} />
         <Route path="/aboutus" element={<AboutUs />} />
