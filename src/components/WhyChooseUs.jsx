@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 /* ---------------------------
    CountingNumber Component
@@ -68,6 +69,7 @@ const CountingNumber = ({ target, duration = 2000 }) => {
    WhyChooseUs Component
 ---------------------------- */
 const WhyChooseUs = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -261,7 +263,10 @@ const WhyChooseUs = () => {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
           }`}
         >
-          <button className="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-pink-500 to-purple-600 rounded-full hover:from-pink-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25">
+          <button
+            onClick={() => navigate("/login")}
+            className="group relative inline-flex items-center justify-center px-12 py-4 text-lg font-semibold text-white bg-gradient-to-r from-pink-500 to-purple-600 rounded-full hover:from-pink-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25"
+          >
             <span className="relative z-10">Start Your Journey</span>
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

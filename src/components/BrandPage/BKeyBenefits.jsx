@@ -1,6 +1,8 @@
 import { CheckCircle, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const BKeyBenefits = ({ benefits, isVisible }) => {
+  const navigate = useNavigate();
   return (
     <section id="benefits" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black"></div>
@@ -34,7 +36,10 @@ const BKeyBenefits = ({ benefits, isVisible }) => {
               ))}
             </div>
 
-            <button className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-500/25">
+            <button
+              onClick={() => navigate("/login")}
+              className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-pink-500/25"
+            >
               Join Now
               <ChevronRight className="w-5 h-5 ml-2 inline-block" />
             </button>

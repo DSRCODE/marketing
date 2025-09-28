@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { FaRocket, FaUserFriends } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Hero = ({ setModalOpen }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({
@@ -133,7 +134,7 @@ const Hero = ({ setModalOpen }) => {
         >
           <button
             aria-label="Brand Login"
-            onClick={() => setModalOpen && setModalOpen(true)}
+            onClick={() => navigate("/brands")}
             className="group bg-gradient-to-r from-pink-500 via-purple-500 to-pink-600 hover:from-pink-600 hover:via-purple-600 hover:to-pink-700 text-white px-8 py-4 rounded-xl text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 hover:scale-105 transform relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out" />
@@ -142,6 +143,7 @@ const Hero = ({ setModalOpen }) => {
           </button>
 
           <button
+            onClick={() => navigate("/influencers")}
             aria-label="Influencer Login"
             className="group bg-white/10 backdrop-blur-sm border-2 border-pink-600/50 text-white hover:bg-pink-50/10 hover:border-pink-500 px-8 py-4 rounded-xl text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-lg hover:shadow-pink-500/30 hover:scale-105 transform relative overflow-hidden"
           >

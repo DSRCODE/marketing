@@ -15,8 +15,10 @@ import {
   DollarSign,
   ArrowRight,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HowItWorks = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("brands");
   const [visibleSteps, setVisibleSteps] = useState([]);
 
@@ -314,7 +316,7 @@ const HowItWorks = () => {
                 ? "Join thousands of brands that trust Social Spark for authentic influencer partnerships."
                 : "Join thousands of creators earning with brands that value authentic content."}
             </p>
-            <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl hover:from-pink-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25">
+            <button onClick={()=> navigate("/login")} className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl hover:from-pink-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-pink-500/25">
               <span className="relative z-10">
                 {activeTab === "brands" ? "Start Campaign" : "Join as Creator"}
               </span>

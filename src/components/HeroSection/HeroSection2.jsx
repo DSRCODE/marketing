@@ -105,11 +105,22 @@ const HeroSection2 = () => {
             <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-purple-500/10 to-transparent" />
 
             {/* Play Button */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            {/* <div className="absolute inset-0 flex items-center justify-center">
               <button className="w-20 h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white group-hover:shadow-2xl">
                 <span className="text-black text-2xl ml-1">▶</span>
               </button>
-            </div>
+            </div> */}
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              controls
+              autoPlay
+              loop
+              muted
+            >
+              <source src="demo.mp4" type="video/mp4" />
+              <source src="/videos/sample.ogg" type="video/ogg" />
+              Your browser does not support the video tag.
+            </video>
 
             {/* Floating Elements */}
             <div className="absolute inset-0">

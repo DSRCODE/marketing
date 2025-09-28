@@ -11,15 +11,13 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "For Brands", path: "/brands" },
     { name: "For Influencers", path: "/influencers" },
-
-    // { name: "Pricing", path: "/pricing" },
     { name: "Contact", path: "/contact" },
   ];
 
   const authOptions = [
-    { name: "Login as Influencer", path: "/login/influencer", icon: "" },
-    { name: "Login as Brand", path: "/login/brand", icon: "" },
-    { name: "Sign Up", path: "/signup", icon: "" },
+    { name: "Login as Influencer", path: "/login", icon: "" },
+    { name: "Login as Brand", path: "/login", icon: "" },
+    { name: "Sign Up", path: "/login", icon: "" },
   ];
 
   return (
@@ -28,10 +26,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
           {/* Logo */}
           <motion.div
-            className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent flex items-center gap-3"
+            className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent flex items-center gap-3 cursor-pointer"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
+            onClick={() => navigate("/")}
           >
             <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-500 rounded-lg flex items-center justify-center">
               <span className="text-white text-sm">📢</span>
@@ -47,14 +46,12 @@ const Navbar = () => {
                   key={i}
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="relative group"
+                  className="relative group cursor-pointer"
+                  onClick={() => navigate(link.path)}
                 >
-                  <a
-                    href={link.path}
-                    className="hover:text-white transition-colors duration-300 py-2 px-1"
-                  >
+                  <span className="hover:text-white transition-colors duration-300 py-2 px-1">
                     {link.name}
-                  </a>
+                  </span>
                   <motion.div
                     className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full"
                     initial={{ width: 0 }}
@@ -97,29 +94,32 @@ const Navbar = () => {
                       onMouseLeave={() => setAuthDropdown(false)}
                     >
                       {authOptions.map((option, i) => (
-                        <motion.a
+                        <motion.div
                           key={i}
-                          href={option.path}
-                          className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200 flex items-center gap-3"
+                          className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200 flex items-center gap-3 cursor-pointer"
                           whileHover={{ x: 4 }}
+                          onClick={() => {
+                            navigate(option.path);
+                            setAuthDropdown(false);
+                          }}
                         >
                           <span className="text-lg">{option.icon}</span>
                           {option.name}
-                        </motion.a>
+                        </motion.div>
                       ))}
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
 
-              <motion.a
+              <motion.button
                 className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-6 py-2.5 cursor-pointer rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-pink-500/25"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => navigate("/login")}
               >
                 Get Started
-              </motion.a>
+              </motion.button>
             </div>
           </div>
 
@@ -163,7 +163,13 @@ const Navbar = () => {
             >
               {/* Mobile Header */}
               <div className="flex justify-between items-center p-6 border-b border-white/10">
-                <div className="text-xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent flex items-center gap-2">
+                <div
+                  className="text-xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent flex items-center gap-2 cursor-pointer"
+                  onClick={() => {
+                    navigate("/");
+                    setMenuOpen(false);
+                  }}
+                >
                   <div className="w-6 h-6 bg-gradient-to-br from-pink-500 to-purple-500 rounded-md flex items-center justify-center">
                     <span className="text-white text-xs">📢</span>
                   </div>
@@ -186,13 +192,15 @@ const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.1 }}
                   >
-                    <a
-                      href={link.path}
-                      onClick={() => setMenuOpen(false)}
-                      className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 font-medium"
+                    <div
+                      onClick={() => {
+                        navigate(link.path);
+                        setMenuOpen(false);
+                      }}
+                      className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 font-medium cursor-pointer"
                     >
                       {link.name}
-                    </a>
+                    </div>
                   </motion.div>
                 ))}
 
@@ -211,29 +219,34 @@ const Navbar = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: (navLinks.length + i) * 0.1 }}
                     >
-                      <a
-                        href={option.path}
-                        onClick={() => setMenuOpen(false)}
-                        className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 flex items-center gap-3"
+                      <div
+                        onClick={() => {
+                          navigate(option.path);
+                          setMenuOpen(false);
+                        }}
+                        className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 flex items-center gap-3 cursor-pointer"
                       >
                         <span className="text-lg">{option.icon}</span>
                         {option.name}
-                      </a>
+                      </div>
                     </motion.div>
-                  ))}/
+                  ))}
                 </div>
               </div>
 
               {/* Mobile CTA */}
               <div className="p-6 border-t border-white/10">
-                <motion.a
+                <motion.button
                   className="block w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white text-center px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-lg"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => {
+                    navigate("/login");
+                    setMenuOpen(false);
+                  }}
                 >
                   Get Started Free
-                </motion.a>
+                </motion.button>
               </div>
             </motion.div>
           </>
