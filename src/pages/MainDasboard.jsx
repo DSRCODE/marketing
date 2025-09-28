@@ -6,7 +6,7 @@ const MainDasboard = () => {
   const [dashboardType, setDashboardType] = useState("brand");
   return (
     <div>
-      {dashboardType === "influncer" ? (
+      {dashboardType === "brand" ? (
         <BrandDashboard />
       ) : (
         <InfluncerDashboard />

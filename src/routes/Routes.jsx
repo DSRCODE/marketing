@@ -21,7 +21,6 @@ export default function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/brands" element={<BrandPromoterPage />} />
         <Route path="/dashboard" element={<MainDasboard />} />
-
         <Route path="/influencers" element={<InfluencerPage />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contact" element={<ContactPage />} />
